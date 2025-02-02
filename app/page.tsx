@@ -26,6 +26,7 @@ import { useTheme } from "next-themes";
 import { useI18nStore, translations } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import SkillCard from "@/components/skill-card";
 
 const skills = [
   {
@@ -154,8 +155,8 @@ export default function Home() {
               <Image
                 src={githubData.avatar_url}
                 alt="Profile"
-                width={150}
-                height={150}
+                width={200}
+                height={200}
                 className="rounded-full mx-auto border-4 border-white dark:border-gray-800 shadow-lg"
               />
             )}
@@ -182,22 +183,7 @@ export default function Home() {
             <div className="overflow-x-auto pb-4 hide-scrollbar">
               <div className="flex gap-6 min-w-max px-4">
                 {skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex-none w-48 p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:scale-105 transition-transform"
-                  >
-                    <Image
-                      src={skill.iconUrl}
-                      alt={skill.name}
-                      width={32}
-                      height={32}
-                      className="w-8 h-8"
-                    />
-                    <div
-                      className={`flex justify-center h-1 mb-3 bg-gradient-to-r ${skill.color}`}
-                    ></div>
-                    <div className="font-medium text-center">{skill.name}</div>
-                  </div>
+                  <SkillCard key={skill.name} {...skill} />
                 ))}
               </div>
             </div>

@@ -18,7 +18,7 @@ export const translations = {
     skills: "Skills",
     projects: "Projects",
     contact: "Contact",
-    role: "Front-end Developer",
+    role: "Front-end / Mobile Developer",
     aboutText:
       "Front-end Developer constantly improving my stack and complementary knowledge. Skilled in graphic design tools, focused on developing skills and expanding my professional experience.",
     contactMe: "Get in touch",
@@ -32,7 +32,7 @@ export const translations = {
     skills: "Habilidades",
     projects: "Projetos",
     contact: "Contato",
-    role: "Desenvolvedor Front-end",
+    role: "Desenvolvedor Front-end / Mobile",
     aboutText:
       "Desenvolvedor Front-end em constante aprimoramento de minha stack e conhecimentos complementares. Hábil no uso de ferramentas de design gráfico, focado em desenvolver habilidades e expandir minha experiência profissional.",
     contactMe: "Entre em Contato",
