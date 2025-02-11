@@ -31,63 +31,63 @@ import SkillCard from "@/components/skill-card";
 const skills = [
   {
     name: "React & React Native",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    icon: Code2,
     color: "from-[#61DAFB] to-[#00B4D8]",
+    description: "Development of web and mobile applications",
   },
   {
     name: "Next.js",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    icon: Blocks,
     color: "from-[#000000] to-[#404040]",
+    description: "Server-side rendering and static site generation",
   },
   {
     name: "TypeScript",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    icon: FileCode,
     color: "from-[#3178C6] to-[#5C9EED]",
+    description: "Type-safe JavaScript development",
   },
   {
-    name: "Tailwind",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+    name: "Tailwind & Sass",
+    icon: Layout,
     color: "from-[#38BDF8] to-[#818CF8]",
+    description: "Modern and responsive styling solutions",
   },
   {
     name: "Git",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    icon: GitBranch,
     color: "from-[#F05032] to-[#FF7B54]",
+    description: "Version control and collaboration",
   },
   {
     name: "UI Libraries",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
+    icon: Palette,
     color: "from-[#7C3AED] to-[#C084FC]",
+    description: "Component libraries and design systems",
   },
   {
     name: "StencilJS",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stencyl/stencyl-original.svg",
+    icon: Cpu,
     color: "from-[#4F46E5] to-[#818CF8]",
+    description: "Web component development",
   },
   {
     name: "Firebase",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+    icon: Database,
     color: "from-[#FFCA28] to-[#FFA000]",
+    description: "Backend and database solutions",
   },
   {
     name: "Figma",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    icon: Globe,
     color: "from-[#F24E1E] to-[#FF7262]",
+    description: "UI/UX design and prototyping",
   },
   {
     name: "Design Systems",
-    iconUrl:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg",
+    icon: BookOpen,
     color: "from-[#0EA5E9] to-[#38BDF8]",
+    description: "Creation and maintenance of design systems",
   },
 ];
 
@@ -96,6 +96,8 @@ export default function Home() {
 
   const { language } = useI18nStore();
   const t = translations[language];
+
+  const doubledSkills = [...skills, ...skills];
 
   const { theme, setTheme } = useTheme();
   const [githubData, setGithubData] = useState<any>(null);
@@ -176,19 +178,37 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 px-4" id="skills">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold mb-8 text-center">{t.skills}</h3>
+      <section className="py-16 px-4 bg-white/50 dark:bg-gray-900/50 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-2xl font-bold mb-12 text-center">{t.skills}</h3>
           <div className="relative">
-            <div className="overflow-x-auto pb-4 hide-scrollbar">
-              <div className="flex gap-6 min-w-max px-4">
-                {skills.map((skill) => (
-                  <SkillCard key={skill.name} {...skill} />
-                ))}
-              </div>
+            <div className="flex gap-8 animate-scroll">
+              {doubledSkills.map((skill, index) => {
+                const IconComponent = skill.icon;
+                return (
+                  <div
+                    key={`${skill.name}-${index}`}
+                    className="flex-none w-64 group"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`p-4 rounded-xl bg-gradient-to-r ${skill.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <IconComponent className="w-8 h-8 text-gray-700 dark:text-gray-300" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-lg mb-1">
+                          {skill.name}
+                        </h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {skill.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#FAFAFA] dark:from-[#111827] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#FAFAFA] dark:from-[#111827] to-transparent pointer-events-none" />
           </div>
         </div>
       </section>
