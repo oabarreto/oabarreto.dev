@@ -100,6 +100,8 @@ export default function Home() {
   const [githubData, setGithubData] = useState<any>(null);
   const [repos, setRepos] = useState<any[]>([]);
 
+  const doubledSkills = [...skills, ...skills];
+
   useEffect(() => {
     setMounted(true);
 
@@ -175,15 +177,17 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 px-4 bg-white/50 dark:bg-gray-900/50 overflow-hidden">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900/50 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-2xl font-bold mb-12 text-center">{t.skills}</h3>
-          <div className="relative">
-            <div className="flex gap-8 animate-scroll">
-              {skills.map((skill, index) => {
-                return <SkillCard {...skill} key={`${skill.name}-${index}`} />;
-              })}
+          <h3 className="text-2xl font-bold mb-12 text-center">Skills</h3>
+          <div className="relative w-full overflow-hidden">
+            <div className="flex w-max gap-8 animate-infinite-scroll">
+              {[...skills, ...skills].map((skill, index) => (
+                <SkillCard {...skill} key={`${skill.name}-${index}`} />
+              ))}
             </div>
+            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
           </div>
         </div>
       </section>
@@ -240,13 +244,13 @@ export default function Home() {
               href="https://github.com/oabarreto"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
+              className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
             >
               <Github className="w-6 h-6" />
             </a>
             <a
               href="mailto:oabarret@gmail.com"
-              className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
+              className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
             >
               <Mail className="w-6 h-6" />
             </a>
@@ -254,7 +258,7 @@ export default function Home() {
               href="https://linkedin.com/in/oabarreto"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
+              className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
             >
               <Linkedin className="w-6 h-6" />
             </a>
