@@ -97,9 +97,6 @@ export default function Home() {
   const { language } = useI18nStore();
   const t = translations[language];
 
-  const doubledSkills = [...skills, ...skills];
-
-  const { theme, setTheme } = useTheme();
   const [githubData, setGithubData] = useState<any>(null);
   const [repos, setRepos] = useState<any[]>([]);
 
@@ -183,30 +180,8 @@ export default function Home() {
           <h3 className="text-2xl font-bold mb-12 text-center">{t.skills}</h3>
           <div className="relative">
             <div className="flex gap-8 animate-scroll">
-              {doubledSkills.map((skill, index) => {
-                const IconComponent = skill.icon;
-                return (
-                  <div
-                    key={`${skill.name}-${index}`}
-                    className="flex-none w-64 group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`p-4 rounded-xl bg-gradient-to-r ${skill.color} bg-opacity-10 group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <IconComponent className="w-8 h-8 text-gray-700 dark:text-gray-300" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">
-                          {skill.name}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {skill.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
+              {skills.map((skill, index) => {
+                return <SkillCard {...skill} key={`${skill.name}-${index}`} />;
               })}
             </div>
           </div>
