@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { Github, Mail, Linkedin, MapPin, Star, GitFork } from "lucide-react";
+import { BiLogoGithub, BiLogoLinkedin, BiLogoGmail } from "react-icons/bi";
 import Image from "next/image";
 import { useI18nStore, translations } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import SkillsLoop from "@/components/SkillsLoop";
+import Link from "next/link";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -153,13 +154,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
             >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:oabarret@gmail.com"
-              className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
-            >
-              <Mail className="w-6 h-6" />
+              <BiLogoGithub className="w-6 h-6" />
             </a>
             <a
               href="https://linkedin.com/in/oabarreto"
@@ -167,7 +162,13 @@ export default function Home() {
               rel="noopener noreferrer"
               className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
             >
-              <Linkedin className="w-6 h-6" />
+              <BiLogoLinkedin className="w-6 h-6" />
+            </a>
+            <a
+              href="mailto:oabarret@gmail.com"
+              className="p-3 rounded-md bg-white dark:bg-gray-800 shadow-md hover:scale-110 transition-transform"
+            >
+              <BiLogoGmail className="w-6 h-6 " />
             </a>
           </div>
         </div>
