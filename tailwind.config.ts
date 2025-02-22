@@ -78,15 +78,19 @@ const config: Config = {
             height: "0",
           },
         },
-        scroll: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
+        "infinite-scroll": {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(-100%)",
+          },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "infinite-scroll": "scroll 30s linear infinite",
+        "infinite-scroll": "infinite-scroll 25s linear infinite",
       },
     },
   },

@@ -1,95 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  Sun,
-  Moon,
-  Github,
-  Mail,
-  Linkedin,
-  MapPin,
-  Code2,
-  Blocks,
-  FileCode,
-  GitBranch,
-  Palette,
-  Cpu,
-  Database,
-  Layout,
-  Globe,
-  BookOpen,
-  Star,
-  GitFork,
-} from "lucide-react";
+import { Github, Mail, Linkedin, MapPin, Star, GitFork } from "lucide-react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { useI18nStore, translations } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import SkillCard from "@/components/skill-card";
-
-const skills = [
-  {
-    name: "React & React Native",
-    icon: Code2,
-    color: "from-[#61DAFB] to-[#00B4D8]",
-    description: "Development of web and mobile applications",
-  },
-  {
-    name: "Next.js",
-    icon: Blocks,
-    color: "from-[#000000] to-[#404040]",
-    description: "Server-side rendering and static site generation",
-  },
-  {
-    name: "TypeScript",
-    icon: FileCode,
-    color: "from-[#3178C6] to-[#5C9EED]",
-    description: "Type-safe JavaScript development",
-  },
-  {
-    name: "Tailwind & Sass",
-    icon: Layout,
-    color: "from-[#38BDF8] to-[#818CF8]",
-    description: "Modern and responsive styling solutions",
-  },
-  {
-    name: "Git",
-    icon: GitBranch,
-    color: "from-[#F05032] to-[#FF7B54]",
-    description: "Version control and collaboration",
-  },
-  {
-    name: "UI Libraries",
-    icon: Palette,
-    color: "from-[#7C3AED] to-[#C084FC]",
-    description: "Component libraries and design systems",
-  },
-  {
-    name: "StencilJS",
-    icon: Cpu,
-    color: "from-[#4F46E5] to-[#818CF8]",
-    description: "Web component development",
-  },
-  {
-    name: "Firebase",
-    icon: Database,
-    color: "from-[#FFCA28] to-[#FFA000]",
-    description: "Backend and database solutions",
-  },
-  {
-    name: "Figma",
-    icon: Globe,
-    color: "from-[#F24E1E] to-[#FF7262]",
-    description: "UI/UX design and prototyping",
-  },
-  {
-    name: "Design Systems",
-    icon: BookOpen,
-    color: "from-[#0EA5E9] to-[#38BDF8]",
-    description: "Creation and maintenance of design systems",
-  },
-];
+import SkillsLoop from "@/components/SkillsLoop";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -99,8 +16,6 @@ export default function Home() {
 
   const [githubData, setGithubData] = useState<any>(null);
   const [repos, setRepos] = useState<any[]>([]);
-
-  const doubledSkills = [...skills, ...skills];
 
   useEffect(() => {
     setMounted(true);
@@ -180,15 +95,7 @@ export default function Home() {
       <section className="py-16 px-4 bg-white dark:bg-gray-900/50 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-2xl font-bold mb-12 text-center">Skills</h3>
-          <div className="relative w-full overflow-hidden">
-            <div className="flex w-max gap-8 animate-infinite-scroll">
-              {[...skills, ...skills].map((skill, index) => (
-                <SkillCard {...skill} key={`${skill.name}-${index}`} />
-              ))}
-            </div>
-            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pointer-events-none"></div>
-          </div>
+          <SkillsLoop />
         </div>
       </section>
 

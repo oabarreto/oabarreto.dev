@@ -1,4 +1,4 @@
-export default function SkillCard({ name, icon, color, description }: any) {
+export default function Skill({ name, icon, color, description }: any) {
   const IconComponent = icon;
 
   return (
